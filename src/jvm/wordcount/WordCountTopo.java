@@ -13,6 +13,7 @@ import backtype.storm.StormSubmitter;
 import backtype.storm.generated.AlreadyAliveException;
 import backtype.storm.generated.InvalidTopologyException;
 import backtype.storm.generated.StormTopology;
+import backtype.storm.metric.LoggingMetricsConsumer;
 import backtype.storm.topology.TopologyBuilder;
 import storm.scheduler.OfflineScheduler;
 import storm.scheduler.OnlineScheduler;
@@ -24,16 +25,17 @@ public class WordCountTopo {
             System.exit(2);
         }*/
         TopologyBuilder builder = new TopologyBuilder();
-        builder.setSpout("word-reader", new WordReader());
-        builder.setBolt("word-spilter", new WordSpliter()).shuffleGrouping("word-reader");
-        builder.setBolt("word-counter", new WordCounter()).shuffleGrouping("word-spilter");
+        builder.setSpout("word-reader", new WordReader(),2);
+        builder.setBolt("word-spilter", new WordSpliter(),3).shuffleGrouping("word-reader");
+        builder.setBolt("word-counter", new WordCounter(),2).shuffleGrouping("word-spilter");
      
         String inputPaht = "/home/miller/research/storm/apache-storm-0.9.3/logs/wc_logs";
         String timeOffset = "2";
         Config conf = new Config();
+        conf.registerMetricsConsumer(MetricsConsumer.class, 2);
         conf.put("INPUT_PATH", inputPaht);
         conf.put("TIME_OFFSET", timeOffset);
-        conf.put(Config.STORM_SCHEDULER, "storm.scheduler.OfflineScheduler");
+        //conf.put(Config.STORM_SCHEDULER, "storm.scheduler.OfflineScheduler");
         //conf.put(Config.SUPERVISOR_ENABLE, false);
         conf.put("reschedule.timeout", "100");
         List<String> list = new LinkedList<String>();
@@ -50,9 +52,12 @@ public class WordCountTopo {
         streamMap.put("word-spilter",list2);
         conf.put("streams", streamMap);
         conf.setDebug(false);
-        conf.setNumWorkers(3);
-        StormSubmitter.submitTopologyWithProgressBar("WordCount1", conf, builder.createTopology());
-      //System.out.println("why+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        conf.setNumWorkers(5);
+        StormSubmitter.submitTopologyWithProgressBar("WordCount2", conf, builder.createTopology());
+        System.setProperty("java.library.path", "/home/miller/research/storm/storm-starter-3/storm-starter/hyperic-sigar-1.6.3/sigar-bin/lib");
+        //LocalCluster cluster = new LocalCluster();
+        //cluster.submitTopology("WordCount2", conf, builder.createTopology());
+        //System.out.println("why+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         if (args != null && args.length > 0) {
             //conf.setNumWorkers(3);
             //StormTopology st = builder.createTopology();

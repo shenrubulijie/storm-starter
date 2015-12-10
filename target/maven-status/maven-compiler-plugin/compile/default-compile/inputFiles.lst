@@ -9,6 +9,7 @@
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/scheduler/Topology.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/starter/tools/RankableObjectWithFields.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/scheduler/Node.java
+/home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/wordcount/MetricsConsumer.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/starter/WordCountTopologyNode.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/scheduler/AssignmentTracker.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/starter/ReachTopology.java
@@ -27,6 +28,8 @@
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/starter/bolt/TotalRankingsBolt.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/scheduler/TrafficManager.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/scheduler/Slot.java
+/home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/scheduler/Profile.java
+/home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/scheduler/AdaptiveScheduler.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/starter/tools/NthLastModifiedTimeTracker.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/scheduler/NodeHelper.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/starter/PrintSampleStream.java
@@ -36,6 +39,7 @@
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/test/RandomSentenceSpout.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/scheduler/OfflineScheduler.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/starter/trident/TridentWordCount.java
+/home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/scheduler/Master.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/scheduler/Executor.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/scheduler/NodePair.java
 /home/miller/research/storm/storm-starter-3/storm-starter/src/jvm/storm/scheduler/WorkerMonitorThread.java
